@@ -1,0 +1,63 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-size: 62.5%;
+}
+
+@media only screen and (max-width: 800px) {
+    html {
+        font-size: 57%;
+    }
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    padding: 8rem;
+}
+
+@media only screen and (max-width: 1000px) {
+    body {
+      padding: 0;
+    }
+}
+
+.container{
+    position:relative;
+    overflow:hidden;
+    border-radius:5rem;
+}
+@media only screen and (max-width: 1000px) {
+    .container {
+      border-radius: 0;
+    }
+}
+
+.slider{
+    display:flex;
+    width:500%;
+    height:55rem;
+    transition: all 0.25s ease-in;
+    transform: translateX(0);
+}
+@media only screen and (max-width: 1000px) {
+    .slider {
+      height: 100vh;
+    }
+}
+
+.slider .box{
+    height:100%;
+    width:100%;
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    
+}
