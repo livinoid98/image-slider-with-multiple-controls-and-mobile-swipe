@@ -80,3 +80,27 @@ const clickCheck = (e) => {
     animate();
     start = setInterval(() => slide("increase"), interval);
 }
+
+trail.forEach(cur => cur.addEventListener("click", (ev) => clickCheck(ev)));
+
+const touchSlide = (() => {
+    let start, move, change, sliderWidth;
+
+    slider.addEventListener("touchstart", (e) => {
+        start = e.touches[0].clientX;
+        sliderWidth = slider.clientWidth/trail.length;
+    });
+
+    slider.addEventListener("touchmove", (e) => {
+        e.preventDefault();
+        move = e.touches[0].clientX;
+        change = start - move;
+    })
+
+    const mobile = (e) => {
+        change > (sliderWidth/4)  ? slide("increase") : null;
+        (change * -1) > (sliderWidth/4) ? slide("decrease") : null;
+        [start, move, change, sliderWidth] = [0,0,0,0];
+    };
+    slider.addEventListener("touchend", mobile);
+});
